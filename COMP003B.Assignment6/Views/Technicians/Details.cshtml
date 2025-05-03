@@ -1,43 +1,46 @@
 ﻿@model COMP003B.Assignment6.Models.Technician
-
-@{
-    ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h1>Details</h1>
-
 <div>
-    <h4>Technician</h4>
+    <h4>Technician Details</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.OSType)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.OSType)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TechnicianAge)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TechnicianAge)
         </dd>
     </dl>
 </div>
+<div class="col-md-4">
+    <h4>OS Experiences</h4>
+    <ul>
+        @if (ViewBag.OSExperiences != null)
+        {
+            foreach (var experience in (List<COMP003B.Assignment6.Models.OSExperience>)ViewBag.OSExperiences)
+            {
+                <li>@experience.OSType</li>
+            }
+        }
+        else
+        {
+            <p>No OS Experiences available.</p>
+        }
+    </ul>
+</div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
     <a asp-action="Index">Back to List</a>
 </div>
