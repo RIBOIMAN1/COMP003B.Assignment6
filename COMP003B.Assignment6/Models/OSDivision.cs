@@ -5,7 +5,7 @@ namespace COMP003B.Assignment6.Models
 	public class OSDivision
 	{
 		[Key]
-		public int CourseId { get; set; }
+		public int DivisionId { get; set; }
 
 		[Required]
 		public string Title { get; set; }
