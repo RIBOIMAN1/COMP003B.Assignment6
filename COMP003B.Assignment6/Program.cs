@@ -12,8 +12,8 @@ namespace COMP003B.Assignment6
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-			builder.Services.AddDbContext<OSExperience>(options =>
-                options.UseSqlServer("Name=ConnectionStrings:DefaultConnection"));
+			builder.Services.AddDbContext<WorkplaceContext>(options =>
+				options.UseSqlServer("Name=ConnectionStrings:DefaultConnection"));
 
 			var app = builder.Build();
 
