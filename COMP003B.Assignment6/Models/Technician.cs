@@ -18,6 +18,5 @@ namespace COMP003B.Assignment6.Models
 		public string OSType { get; set; }
 
 		public virtual ICollection<OSExperience>? OSExperiences { get; set; }
-		public int TechnicianAge { get; set; }
 	}
 }
