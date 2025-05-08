@@ -39,10 +39,11 @@ namespace COMP003B.Assignment6.Controllers
 			{
 				return NotFound();
 			}
+			ViewBag.OSExperiences = from e in _context.OSExperiences
+									join d in _context.OSDivisions on e.OSDivisionId equals d.DivisionId
+									where d.DivisionId == id
+									select e;
 
-			ViewBag.OSExperiences = _context.OSExperiences
-				.Where(e => e.OSDivisionId == id)
-				.ToList();
 			return View(oSDivision);
 		}
 

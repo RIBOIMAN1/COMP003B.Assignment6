@@ -3,6 +3,7 @@ using COMP003B.Assignment6.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace COMP003B.Assignment6.Migrations
 {
     [DbContext(typeof(WorkplaceContext))]
-    partial class WorkplaceContextModelSnapshot : ModelSnapshot
+    [Migration("20250507120234_RemoveOSDivisionForeignKey")]
+    partial class RemoveOSDivisionForeignKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,7 +62,7 @@ namespace COMP003B.Assignment6.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OSDivisionId")
+                    b.Property<int?>("OSDivisionDivisionId")
                         .HasColumnType("int");
 
                     b.Property<string>("OSType")
@@ -71,7 +74,7 @@ namespace COMP003B.Assignment6.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OSDivisionId");
+                    b.HasIndex("OSDivisionDivisionId");
 
                     b.HasIndex("TechnicianId");
 
@@ -114,9 +117,7 @@ namespace COMP003B.Assignment6.Migrations
                 {
                     b.HasOne("COMP003B.Assignment6.Models.OSDivision", "OSDivision")
                         .WithMany()
-                        .HasForeignKey("OSDivisionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OSDivisionDivisionId");
 
                     b.HasOne("COMP003B.Assignment6.Models.Technician", "Technician")
                         .WithMany("OSExperiences")
